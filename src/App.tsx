@@ -412,7 +412,7 @@ export default function App() {
                     </div>
                     <div>
                       <h4 className="font-black uppercase tracking-widest mb-1">Pozovite nas 24/7</h4>
-                      <p className="text-gray-600 text-lg">+1 (555) 123-4567</p>
+                      <p className="text-gray-600 text-lg">+387 644071821</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-6">
@@ -421,7 +421,7 @@ export default function App() {
                     </div>
                     <div>
                       <h4 className="font-black uppercase tracking-widest mb-1">Lokacija</h4>
-                      <p className="text-gray-600 text-lg">123 Mechanic Ave, Auto District, NY 10001</p>
+                      <p className="text-gray-600 text-lg">Kasindolska cesta br.205, Sarajevo</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-6">
@@ -465,7 +465,7 @@ export default function App() {
                         id="phone"
                         name="phone"
                         type="tel"
-                        placeholder="(555) 000-0000"
+                        placeholder="+387 60 000 000"
                         value={formData.phone}
                         onChange={handleInputChange}
                         className={`rounded-none h-12 border-gray-300 focus-visible:ring-[#FF4500] ${errors.phone ? "border-red-500" : ""}`}
@@ -604,11 +604,11 @@ export default function App() {
               <ul className="space-y-4 text-gray-400 font-medium">
                 <li className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-[#FF4500] shrink-0" />
-                  <span>123 Mechanic Ave, Auto District, NY 10001</span>
+                  <span>Kasindolska cesta br.205, Sarajevo</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone className="w-5 h-5 text-[#FF4500] shrink-0" />
-                  <span>+1 (555) 123-4567</span>
+                  <span>+387 644071821</span>
                 </li>
               </ul>
             </div>
