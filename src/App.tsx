@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { motion } from "motion/react";
 import { supabase } from "./lib/supabase";
+import logoImg from "./assets/logo.png";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -162,9 +163,9 @@ export default function App() {
               {/* 
                 To use your uploaded logo:
                 1. Open the file explorer on the left.
-                2. Upload your logo image into the "public" folder and name it "logo.png".
+                2. Upload your logo image into the "src/assets" folder and name it "logo.png".
               */}
-              <img src="/logo.png" alt="Osmanović Garage Logo" className="h-10 md:h-14 w-auto object-contain" onError={(e) => {
+              <img src={logoImg} alt="Osmanović Garage Logo" className="h-10 md:h-14 w-auto object-contain" onError={(e) => {
                 // Fallback if logo.png is not found
                 e.currentTarget.style.display = 'none';
                 e.currentTarget.nextElementSibling?.classList.remove('hidden');
@@ -564,7 +565,7 @@ export default function App() {
             <div className="md:col-span-2">
               <div className="flex items-center mb-6">
                 <div className="flex items-center justify-center inline-block">
-                  <img src="/logo.png" alt="Osmanović Garage Logo" className="h-16 md:h-24 w-auto object-contain" onError={(e) => {
+                  <img src={logoImg} alt="Osmanović Garage Logo" className="h-16 md:h-24 w-auto object-contain" onError={(e) => {
                     e.currentTarget.style.display = 'none';
                     e.currentTarget.nextElementSibling?.classList.remove('hidden');
                   }} />
