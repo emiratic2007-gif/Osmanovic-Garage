@@ -22,18 +22,24 @@ export default function BlogPage() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#111111]/95 backdrop-blur-md border-b border-white/10">
         <div className="container mx-auto px-4 h-20 flex items-center justify-between max-w-7xl">
           <Link to="/" className="flex items-center gap-3 group">
-            <img src={logoImg} alt="Logo" className="h-10 w-auto" />
-            <span className="text-white font-black text-xl tracking-tighter group-hover:text-[#FF4500] transition-colors">
-              OSMANOVIĆ <span className="text-[#FF4500] group-hover:text-white">GARAGE</span>
+            <img src={logoImg} alt="Logo" className="h-10 w-auto" onError={(e) => {
+                e.currentTarget.style.display = 'none';
+                e.currentTarget.nextElementSibling?.classList.remove('hidden');
+              }} />
+            <div className="hidden w-10 h-10 bg-[#E60000] items-center justify-center font-black text-xl italic tracking-tighter text-white rounded-full">
+              OG
+            </div>
+            <span className="text-white font-black text-xl tracking-tighter group-hover:text-[#E60000] transition-colors">
+              OSMANOVIĆ <span className="text-[#E60000] group-hover:text-white">GARAGE</span>
             </span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">
-            <Link to="/" className="text-white/70 hover:text-[#FF4500] font-bold text-sm uppercase tracking-widest transition-colors">Početna</Link>
-            <Link to="/#usluge" className="text-white/70 hover:text-[#FF4500] font-bold text-sm uppercase tracking-widest transition-colors">Usluge</Link>
-            <Link to="/blog" className="text-[#FF4500] font-bold text-sm uppercase tracking-widest transition-colors">Savjeti</Link>
+            <Link to="/" className="text-white/70 hover:text-[#E60000] font-bold text-sm uppercase tracking-widest transition-colors">Početna</Link>
+            <Link to="/#usluge" className="text-white/70 hover:text-[#E60000] font-bold text-sm uppercase tracking-widest transition-colors">Usluge</Link>
+            <Link to="/blog" className="text-[#E60000] font-bold text-sm uppercase tracking-widest transition-colors">Savjeti</Link>
             <Link to="/#book">
-              <Button className="bg-[#FF4500] hover:bg-white hover:text-[#111111] text-white font-bold rounded-none px-6 uppercase tracking-widest text-xs transition-all">
+              <Button className="bg-[#E60000] hover:bg-white hover:text-[#111111] text-white font-bold rounded-full px-8 uppercase tracking-widest text-xs transition-all shadow-lg shadow-[#E60000]/20 hover:shadow-[#E60000]/40">
                 Zakaži termin
               </Button>
             </Link>
@@ -51,7 +57,7 @@ export default function BlogPage() {
               transition={{ duration: 0.6 }}
             >
               <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-6">
-                Savjeti i <span className="text-[#FF4500]">Edukacija</span>
+                Savjeti i <span className="text-[#E60000]">Edukacija</span>
               </h1>
               <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-10">
                 Saznajte kako pravilno održavati vaše vozilo, prepoznati kvarove na vrijeme i uštedjeti novac kroz preventivno održavanje.
@@ -62,7 +68,7 @@ export default function BlogPage() {
                 <Input 
                   type="text" 
                   placeholder="Pretraži članke..." 
-                  className="bg-white/5 border-white/10 text-white pl-12 h-14 rounded-none focus-visible:ring-[#FF4500]"
+                  className="bg-white/5 border-white/10 text-white pl-12 h-14 rounded-full focus-visible:ring-[#E60000] focus-visible:border-[#E60000]"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
@@ -81,7 +87,7 @@ export default function BlogPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="group flex flex-col h-full border-b-4 border-transparent hover:border-[#FF4500] transition-all bg-gray-50 overflow-hidden"
+                className="group flex flex-col h-full bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100"
               >
                 <Link to={`/blog/${post.id}`} className="block overflow-hidden aspect-video">
                   <img 
@@ -92,10 +98,10 @@ export default function BlogPage() {
                 </Link>
                 <div className="p-8 flex flex-col flex-grow">
                   <div className="flex items-center gap-4 mb-4 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">
-                    <span className="flex items-center gap-1"><Calendar className="w-3 h-3 text-[#FF4500]" /> {post.date}</span>
-                    <span className="flex items-center gap-1"><Tag className="w-3 h-3 text-[#FF4500]" /> {post.category}</span>
+                    <span className="flex items-center gap-1"><Calendar className="w-3 h-3 text-[#E60000]" /> {post.date}</span>
+                    <span className="flex items-center gap-1"><Tag className="w-3 h-3 text-[#E60000]" /> {post.category}</span>
                   </div>
-                  <h2 className="text-2xl font-black uppercase tracking-tighter leading-tight mb-4 group-hover:text-[#FF4500] transition-colors">
+                  <h2 className="text-2xl font-black uppercase tracking-tighter leading-tight mb-4 group-hover:text-[#E60000] transition-colors">
                     <Link to={`/blog/${post.id}`}>{post.title}</Link>
                   </h2>
                   <p className="text-gray-500 mb-8 line-clamp-3 leading-relaxed">
@@ -103,9 +109,9 @@ export default function BlogPage() {
                   </p>
                   <Link 
                     to={`/blog/${post.id}`} 
-                    className="mt-auto inline-flex items-center font-bold text-xs uppercase tracking-widest text-[#FF4500] hover:text-[#111111] transition-colors"
+                    className="mt-auto inline-flex items-center font-bold text-xs uppercase tracking-widest text-[#E60000] hover:text-[#111111] transition-colors"
                   >
-                    Pročitaj više <ArrowRight className="ml-2 w-4 h-4" />
+                    Pročitaj više <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
               </motion.article>
@@ -118,7 +124,7 @@ export default function BlogPage() {
               <Button 
                 variant="link" 
                 onClick={() => setSearchTerm("")}
-                className="text-[#FF4500] font-bold uppercase tracking-widest mt-4"
+                className="text-[#E60000] font-bold uppercase tracking-widest mt-4 hover:text-[#cc0000]"
               >
                 Prikaži sve članke
               </Button>
@@ -131,9 +137,15 @@ export default function BlogPage() {
       <footer className="bg-[#111111] text-white py-20 border-t border-white/5">
         <div className="container mx-auto px-4 max-w-7xl text-center">
           <Link to="/" className="inline-flex items-center gap-3 mb-8">
-            <img src={logoImg} alt="Logo" className="h-12 w-auto" />
+            <img src={logoImg} alt="Logo" className="h-12 w-auto" onError={(e) => {
+                e.currentTarget.style.display = 'none';
+                e.currentTarget.nextElementSibling?.classList.remove('hidden');
+              }} />
+            <div className="hidden w-12 h-12 bg-[#E60000] items-center justify-center font-black text-2xl italic tracking-tighter text-white rounded-full">
+              OG
+            </div>
             <span className="text-white font-black text-2xl tracking-tighter">
-              OSMANOVIĆ <span className="text-[#FF4500]">GARAGE</span>
+              OSMANOVIĆ <span className="text-[#E60000]">GARAGE</span>
             </span>
           </Link>
           <p className="text-gray-500 max-w-md mx-auto mb-10">
