@@ -168,6 +168,7 @@ export default function HomePage() {
           </div>
           <nav className="hidden md:flex items-center gap-8 font-bold text-sm tracking-widest uppercase">
             <Link to="/#services" className="hover:text-[#FF4500] transition-colors">Usluge</Link>
+            <Link to="/blog" className="hover:text-[#FF4500] transition-colors">Savjeti</Link>
             <Link to="/#about" className="hover:text-[#FF4500] transition-colors">O nama</Link>
             <Link to="/#contact" className="hover:text-[#FF4500] transition-colors">Kontakt</Link>
           </nav>
@@ -191,6 +192,7 @@ export default function HomePage() {
         {isMobileMenuOpen && (
           <div className="md:hidden absolute top-20 left-0 w-full bg-[#111111] border-b border-white/10 shadow-2xl flex flex-col">
             <Link to="/#services" onClick={() => setIsMobileMenuOpen(false)} className="p-4 border-b border-white/10 font-bold uppercase tracking-widest hover:text-[#FF4500]">Usluge</Link>
+            <Link to="/blog" onClick={() => setIsMobileMenuOpen(false)} className="p-4 border-b border-white/10 font-bold uppercase tracking-widest hover:text-[#FF4500]">Savjeti</Link>
             <Link to="/#about" onClick={() => setIsMobileMenuOpen(false)} className="p-4 border-b border-white/10 font-bold uppercase tracking-widest hover:text-[#FF4500]">O nama</Link>
             <Link to="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="p-4 border-b border-white/10 font-bold uppercase tracking-widest hover:text-[#FF4500]">Kontakt</Link>
             <div className="p-4">
@@ -256,6 +258,7 @@ export default function HomePage() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.8 }}
+                  className="flex flex-col md:flex-row gap-4"
                 >
                   <Button
                     size="lg"
@@ -264,6 +267,15 @@ export default function HomePage() {
                   >
                     Zakaži servis
                     <ArrowRight className="hidden md:block ml-3 h-6 w-6" />
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    onClick={() => window.open("https://www.google.com/maps/search/?api=1&query=Kasindolska+cesta+br.+225,+Sarajevo+71000", "_blank")}
+                    className="w-full md:w-auto border-white text-white hover:bg-white hover:text-[#111111] font-bold rounded-none px-10 h-16 text-lg uppercase tracking-wider transition-all bg-transparent"
+                  >
+                    Lokacija
+                    <MapPin className="ml-3 h-6 w-6" />
                   </Button>
                 </motion.div>
               </div>
@@ -376,6 +388,72 @@ export default function HomePage() {
                 );
               })}
             </motion.div>
+          </div>
+        </section>
+
+        {/* BLOG PREVIEW SECTION */}
+        <section className="py-24 bg-white">
+          <div className="container mx-auto px-4 max-w-7xl">
+            <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+              <div className="max-w-xl">
+                <div className="bg-[#FF4500] text-white px-4 py-1 font-bold text-sm tracking-widest uppercase inline-block mb-4">Edukacija</div>
+                <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none">
+                  Savjeti za <span className="text-[#FF4500]">vaše vozilo</span>
+                </h2>
+              </div>
+              <Link to="/blog">
+                <Button variant="outline" className="rounded-none border-2 border-[#111111] font-black uppercase tracking-widest hover:bg-[#111111] hover:text-white transition-all h-14 px-8">
+                  Vidi sve savjete
+                </Button>
+              </Link>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                {
+                  id: "priprema-auta-za-zimu",
+                  title: "Kako pripremiti auto za zimu?",
+                  category: "Održavanje",
+                  image: "https://images.unsplash.com/photo-1542282088-fe8426682b8f?q=80&w=2070&auto=format&fit=crop"
+                },
+                {
+                  id: "znacenje-lampica-na-tabli",
+                  title: "Šta znače lampice na instrument tabli?",
+                  category: "Savjeti",
+                  image: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=2083&auto=format&fit=crop"
+                },
+                {
+                  id: "zamjena-velikog-remena",
+                  title: "Kada je zapravo vrijeme za zamjenu velikog remena?",
+                  category: "Servis",
+                  image: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=2072&auto=format&fit=crop"
+                }
+              ].map((post, idx) => (
+                <motion.div 
+                  key={idx}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  className="group"
+                >
+                  <Link to={`/blog/${post.id}`} className="block overflow-hidden aspect-video mb-6">
+                    <img 
+                      src={post.image} 
+                      alt={post.title} 
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+                    />
+                  </Link>
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-[#FF4500] mb-2">{post.category}</div>
+                  <h3 className="text-xl font-black uppercase tracking-tighter leading-tight mb-4 group-hover:text-[#FF4500] transition-colors">
+                    <Link to={`/blog/${post.id}`}>{post.title}</Link>
+                  </h3>
+                  <Link to={`/blog/${post.id}`} className="inline-flex items-center font-bold text-[10px] uppercase tracking-widest text-[#111111] group-hover:text-[#FF4500] transition-colors">
+                    Pročitaj više <ArrowRight className="ml-2 w-3 h-3" />
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
 
