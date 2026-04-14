@@ -19,13 +19,16 @@ import {
   MapPin,
   Clock,
   ArrowRight,
+  ChevronRight,
   Menu,
   X,
   Car,
   Wrench,
   Key,
   Zap,
-  Award
+  Award,
+  CheckCircle2,
+  ShieldCheck
 } from "lucide-react";
 import { SERVICES } from "../data/services";
 
@@ -320,6 +323,100 @@ export default function HomePage() {
           </motion.div>
         </section>
 
+        {/* ABOUT US SECTION */}
+        <section id="about" className="py-24 bg-white overflow-hidden relative">
+          <div className="container mx-auto px-4 max-w-7xl relative z-10">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              
+              {/* Text Content */}
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+              >
+                <div className="bg-[#E60000]/10 text-[#E60000] px-4 py-1.5 rounded-full font-bold text-xs tracking-widest uppercase inline-block mb-6">O Nama</div>
+                <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-[1.1] mb-8 text-[#111111]">
+                  Vaš pouzdan partner na cesti od <span className="text-[#E60000]">1998.</span>
+                </h2>
+                <p className="text-gray-600 text-lg leading-relaxed mb-6">
+                  Osmanović Garage je nastao iz čiste strasti prema automobilima. Ono što je počelo kao mala porodična radionica, danas je moderni servisni centar opremljen najnovijom tehnologijom za dijagnostiku i popravak svih vrsta vozila.
+                </p>
+                <p className="text-gray-600 text-lg leading-relaxed mb-10">
+                  Naš pristup je jednostavan: tretiramo svaki automobil kao da je naš vlastiti. Transparentnost, poštenje i vrhunski kvalitet usluge su temelji na kojima gradimo povjerenje sa našim klijentima.
+                </p>
+                
+                <div className="grid sm:grid-cols-2 gap-6 mb-10">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-[#E60000] shadow-sm">
+                       <CheckCircle2 className="w-6 h-6" />
+                    </div>
+                    <span className="font-bold text-[#111111] uppercase tracking-wider text-sm">Stručni Tim</span>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-[#E60000] shadow-sm">
+                       <ShieldCheck className="w-6 h-6" />
+                    </div>
+                    <span className="font-bold text-[#111111] uppercase tracking-wider text-sm">Garancija na rad</span>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-[#E60000] shadow-sm">
+                       <Wrench className="w-6 h-6" />
+                    </div>
+                    <span className="font-bold text-[#111111] uppercase tracking-wider text-sm">Moderna Oprema</span>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-[#E60000] shadow-sm">
+                       <Award className="w-6 h-6" />
+                    </div>
+                    <span className="font-bold text-[#111111] uppercase tracking-wider text-sm">Vrhunski Kvalitet</span>
+                  </div>
+                </div>
+
+                <Button
+                  onClick={scrollToBooking}
+                  className="bg-[#111111] hover:bg-[#E60000] text-white font-bold rounded-full px-10 h-14 uppercase tracking-wider shadow-xl transition-all hover:scale-105"
+                >
+                  Zakaži termin
+                </Button>
+              </motion.div>
+
+              {/* Image Collage */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                className="relative h-[500px] md:h-[600px] w-full mt-10 lg:mt-0"
+              >
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#E60000] rounded-full z-0 blur-[100px] opacity-20" />
+                
+                <img 
+                  src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?q=80&w=2070&auto=format&fit=crop" 
+                  alt="Naša garaža" 
+                  className="absolute top-0 right-0 w-[75%] h-[65%] object-cover rounded-[2.5rem] shadow-2xl z-10"
+                />
+                
+                <img 
+                  src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=1974&auto=format&fit=crop" 
+                  alt="Mehaničar na poslu" 
+                  className="absolute bottom-0 left-0 w-[65%] h-[55%] object-cover rounded-[2.5rem] shadow-2xl z-20 border-8 border-white"
+                />
+
+                <motion.div 
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute bottom-12 right-4 md:-right-4 z-30 bg-[#111111] text-white p-6 md:p-8 rounded-[2rem] shadow-2xl border-b-4 border-[#E60000]"
+                >
+                  <div className="text-5xl md:text-6xl font-black text-[#E60000] tracking-tighter leading-none mb-2">25+</div>
+                  <div className="text-xs md:text-sm font-bold uppercase tracking-widest text-gray-300">Godina<br/>Tradicije</div>
+                </motion.div>
+              </motion.div>
+
+            </div>
+          </div>
+        </section>
+
         {/* WHY CHOOSE US */}
         <section className="py-24 bg-white overflow-hidden relative border-b border-gray-200">
           {/* Decorative background elements */}
@@ -380,10 +477,29 @@ export default function HomePage() {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.5 }}
-                className="md:hidden flex items-center justify-center gap-2 text-[#E60000] font-bold uppercase tracking-widest text-xs mt-10 animate-pulse"
+                className="md:hidden flex flex-col items-center justify-center gap-2 text-[#E60000] font-bold uppercase tracking-widest text-xs mt-10"
               >
                 <span>Pomiči za više</span>
-                <ArrowRight className="w-4 h-4" />
+                <div className="flex">
+                  <motion.div
+                    animate={{ opacity: [0.3, 1, 0.3] }}
+                    transition={{ duration: 1.5, repeat: Infinity, delay: 0 }}
+                  >
+                    <ChevronRight className="w-5 h-5 -mr-2" />
+                  </motion.div>
+                  <motion.div
+                    animate={{ opacity: [0.3, 1, 0.3] }}
+                    transition={{ duration: 1.5, repeat: Infinity, delay: 0.2 }}
+                  >
+                    <ChevronRight className="w-5 h-5 -mr-2" />
+                  </motion.div>
+                  <motion.div
+                    animate={{ opacity: [0.3, 1, 0.3] }}
+                    transition={{ duration: 1.5, repeat: Infinity, delay: 0.4 }}
+                  >
+                    <ChevronRight className="w-5 h-5" />
+                  </motion.div>
+                </div>
               </motion.div>
             </div>
 
